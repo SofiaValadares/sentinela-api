@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from sentinela.routes import connection_test
+from routes import connection_test
 
 app = FastAPI()
 
