@@ -1,7 +1,7 @@
 from fastapi import FastAPI
+from sentinela.routes import connection_test
 
 app = FastAPI()
 
-@app.get('/')
-def read_root():
-    return {'message': 'Olá Mundo!'}
+# Include routes
+app.include_router(connection_test.router)
