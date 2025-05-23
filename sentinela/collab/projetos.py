@@ -7,27 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1ictS_C5Ak1l5yXrypdQy4ezYuIXLE7y1
 """
 
-from google.colab import drive
-drive.mount('/content/drive')
-
-"""# Dicionario de dados (atualizar depois)
-
----
-
-1. **latitude**: Coordenada geográfica indicando a posição norte-sul do foco de incêndio.
-2. **longitude**: Coordenada geográfica indicando a posição leste-oeste do foco de incêndio.
-3. **data_pas**: Data e hora da passagem do satélite que capturou o foco de incêndio.
-4. **satelite**: Nome do satélite responsável pela captura dos dados (ex: TERRA_M-M, NPP-375D).
-5. **pais**: Nome do país onde o foco de incêndio foi detectado (ex: Brasil).
-6. **estado**: Unidade federativa dentro do país onde ocorreu o foco de incêndio.
-7. **municipio**: Cidade ou localidade específica onde ocorreu o foco de incêndio.
-8. **bioma**: Tipo de ecossistema onde ocorreu o foco de incêndio (ex: Amazônia, Cerrado, Caatinga).
-9. **numero_dias_sem_chuva**: Quantidade de dias desde a última chuva significativa no local do foco.
-10. **precipitacao**: Quantidade de chuva registrada na área do foco de incêndio, geralmente medida em milímetros (mm).
-11. **risco_fogo**: Índice que representa o risco de incêndios na região, podendo variar de 0 a 1 (onde 1 indica risco máximo).
-12. **frp**: "Fire Radiative Power" (Potência Radiativa do Fogo), que indica a energia liberada pelo incêndio, geralmente em megawatts (MW).
-"""
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
