@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-df = pd.read_csv('/content/drive/Shareddrives/Sentinela - Projetos 5/Possíveis Bases de Dados/dados_filtrados_caatinga.csv')
+df = pd.read_csv('dados_filtrados_caatinga.csv')
 df.head()
 
 """# Limpeza dos dados"""
