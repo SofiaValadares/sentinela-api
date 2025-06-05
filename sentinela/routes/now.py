@@ -19,13 +19,6 @@ async def get_now(
     if state == "DESCONHECIDO":
         raise HTTPException(status_code=400, detail="Coordenadas fora da área de cobertura")
 
-    dados = pd.DataFrame([{
-        "data_pas": data_pas,
-        "numero_dias_sem_chuva": numero_dias_sem_chuva,
-        "latitude": latitude,
-        "longitude": longitude,
-        "estado": state
-    }])
 
     dados = pd.DataFrame([{
         "data_pas": data_pas,
