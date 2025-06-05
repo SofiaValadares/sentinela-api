@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from sentinela.database import Base, engine
 from sentinela.middleware import LogIPMiddleware
-from sentinela.routes import logs, history, now, alert_me, weather
+from sentinela.routes import now
 
 app = FastAPI()
 
@@ -16,8 +16,4 @@ async def root():
 async def ping():
     return {"ping": "pong"}
 
-app.include_router(logs.router)
-app.include_router(history.router)
 app.include_router(now.router)
-app.include_router(alert_me.router)
-app.include_router(weather.router)

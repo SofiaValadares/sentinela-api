@@ -79,11 +79,3 @@ def predizer_sem_dias_sem_chuva(dados: pd.DataFrame):
 # df_exemplo = pd.DataFrame({...})
 # resultado = predizer_com_dias_sem_chuva(df_exemplo)
 # resultado2 = predizer_sem_dias_sem_chuva(df_exemplo)
-
-df_exemplo = pd.DataFrame({
-    'data_pas': [pd.Timestamp(datetime(2025, 11, 28, 14))],
-    'numero_dias_sem_chuva': [25],
-    'latitude': [-11.5],
-    'longitude': [-56.2],
-    'estado': ['PERNAMBUCO'],
-})
