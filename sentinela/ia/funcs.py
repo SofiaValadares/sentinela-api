@@ -63,14 +63,14 @@ def preprocessar_sem_dias_sem_chuva(df: pd.DataFrame) -> pd.DataFrame:
 
 # Função para carregar e executar o modelo modelo_com_dias_sem_chuva.pkl
 def predizer_com_dias_sem_chuva(dados: pd.DataFrame):
-    modelo = joblib.load('modelo_com_dias_sem_chuva.pkl')
+    modelo = joblib.load('./sentinela/ia/modelo_com_dias_sem_chuva.pkl')
     dados_proc = preprocessar_com_dias_sem_chuva(dados)
     pred = modelo.predict(dados_proc)
     return pred
 
 # Função para carregar e executar o modelo modelo_sem_dias_sem_chuva.pkl
 def predizer_sem_dias_sem_chuva(dados: pd.DataFrame):
-    modelo = joblib.load('modelo_sem_dias_sem_chuva.pkl')
+    modelo = joblib.load('./sentinela/ia/modelo_sem_dias_sem_chuva.pkl')
     dados_proc = preprocessar_sem_dias_sem_chuva(dados)
     pred = modelo.predict(dados_proc)
     return pred

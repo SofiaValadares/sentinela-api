@@ -9,12 +9,11 @@ router = APIRouter(prefix="/now", tags=["Now"])
 
 @router.get("/")
 async def get_now(
-    data_pas: datetime,
     numero_dias_sem_chuva: int,
     latitude: float,
     longitude: float
 ):
-    print("✅ Parâmetros recebidos:", data_pas, numero_dias_sem_chuva, latitude, longitude)
+    data_pas = datetime.now().isoformat(timespec="seconds")
 
     state = find_state(latitude, longitude)
     if state == "DESCONHECIDO":
