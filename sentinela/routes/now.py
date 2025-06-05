@@ -27,6 +27,17 @@ async def get_now(
         "estado": state
     }])
 
+    dados = pd.DataFrame([{
+        "data_pas": data_pas,
+        "numero_dias_sem_chuva": numero_dias_sem_chuva,
+        "latitude": latitude,
+        "longitude": longitude,
+        "estado": state
+    }])
+
+    # CONVERSÃO IMPORTANTE
+    dados["data_pas"] = pd.to_datetime(dados["data_pas"])
+
     try:
         resultado = predizer_com_dias_sem_chuva(dados)
         return {"risco": int(resultado[0]), "estado": state}
