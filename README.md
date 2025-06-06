@@ -17,10 +17,20 @@ sentinela-api/
 │   ├── database.py              # Engine, sessão e Base do SQLAlchemy
 │   ├── models.py                # Modelo AccessLog (tabela de logs de IP)
 │   ├── middleware.py            # Middleware que registra IPs
-│   ├── routes/
+│   ├── routes/                  # Rotas da aplicação
+│   │   └── now.py               # Rota para risco de incêndio
 │   │   └── logs.py              # Rota para consultar logs
-│   └── schemas/
-│       └── log_schema.py        # Schema Pydantic para retorno dos logs
+│   ├── schemas/                 # Schemas Pydantic
+│   │   └── log_schema.py        # Schema para retorno dos logs
+│   ├── ia/                      # Inteligência Artificial e modelos
+│   │   ├── __init__.py
+│   │   ├── funcs.py             # Funções de predição e preprocessamento
+│   │   ├── modelo_com_dias_sem_chuva.pkl      # Modelo ML com dias sem chuva
+│   │   └── modelo_sem_dias_sem_chuva.pkl      # Modelo ML sem dias sem chuva
+│   └── map/                     # Funções e dados de geolocalização
+│       ├── __init__.py
+│       ├── map_funcs.py         # Funções para encontrar estado por coordenada
+│       └── map.geojson          # Arquivo GeoJSON dos estados
 ```
 
 ---
@@ -63,10 +73,37 @@ pip install fastapi uvicorn sqlalchemy python-dotenv
 uvicorn sentinela.main:app --reload
 ```
 
-### 5. Teste no navegador
+---
 
-- `GET /ping` → Teste de conectividade: retorna `{ "ping": "pong" }`
-- `GET /logs` → Lista os IPs registrados
-- `GET /docs` → Documentação Swagger interativa
+## 🌐 Rotas Principais da API
+
+| Método | Rota    | Descrição                                                                 |
+|--------|---------|---------------------------------------------------------------------------|
+| GET    | /ping   | Teste de conectividade. Retorna `{ "ping": "pong" }`                      |
+| GET    | /now    | Retorna o risco de incêndio para uma coordenada e data atual              |
 
 ---
+
+### Exemplos de uso
+
+#### `GET /now`
+
+Retorna o risco de incêndio para as coordenadas e data atual.
+
+**Parâmetros:**
+- `latitude` (float): Latitude do local (obrigatório)
+- `longitude` (float): Longitude do local (obrigatório)
+- `numero_dias_sem_chuva` (int): Número de dias sem chuva (opcional)
+
+**Exemplo de requisição:**
+```bash
+curl "http://localhost:8000/now?latitude=-8.05&longitude=-34.9&numero_dias_sem_chuva=5"
+```
+
+**Resposta esperada:**
+```json
+{
+  "risco": 1,
+  "estado": "PERNAMBUCO"
+}
+```
